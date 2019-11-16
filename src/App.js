@@ -1,59 +1,140 @@
 import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <div class="row"> 
-        <div class="col-xl-4 col-md-4 col-4">
-          <span class="text-justify">Logo</span>
-        </div>
-      </div>  
+class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      inp1: '',
+      inp2: '',
+      inp3: '',
+      recp: '',
+    }
+    this.SummonEdward = this.SummonEdward.bind(this);
+  }
 
-      <div class="row"> 
-        <div class="col-xl-2 col-md-2 col-0"/>
-        <div class="col-xl-2 col-md-2 col-12">
-        <input type="text" class="form-control" placeholder="Ingridient"/>
-        </div>
-        <div class="col-xl-2 col-md-2 col-12">
-          <input type="text" class="form-control" placeholder="Ingridient"/>
-        </div>
-        <div class="col-xl-2 col-md-2 col-12">
-          <input type="text" class="form-control" placeholder="Ingridient"/>
-        </div>
-        <div class="col-xl-1 col-md-1 col-6">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
-        </div>
-        <div class="col-xl-1 col-md-1 col-6">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
-        </div>
-        <div class="col-xl-2 col-md-2 col-0"/>
-      </div>
+  //Запоминаем рецепт
+  handleUserInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({[name]: value});
+  }
 
-      <div class="row"> 
-        <div class="col-xl-1 col-md-1 col-1"/>
-        <div class="col-xl-10 col-md-10 col-10">
-          <ul class="list-group">
-            <li class="list-group-item">Recipe</li>
-          </ul>
+  //Выводим рецепт
+  Protocol11() {
+    if (this.state.recp !== '') {
+      return(
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Some shit to eat!!!</h1>
+            <p class="lead">
+              {this.state.recp}
+            </p>
+          </div>
         </div>
-        <div class="col-xl-1 col-md-1 col-1"/>
-      </div>
+      )
+    }
+  }
+    
+  //Записываем рецепт и обнуляем ингридиенты
+  SummonEdward() {
+    let recipe;
+    if (this.state.inp3 !== '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +' and '+ this.state.inp3 +'. Burn that. Throw that away.'};
+    if (this.state.inp3 === '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +'. Burn that. Throw that away.'};
+    if (this.state.inp2 === '') {recipe = 'Use '+ this.state.inp1 +'. Burn that. Throw that away.'};
+    if (this.state.inp1 === '') {recipe = 'Haha, just kidding) You dont deserve food!!!'};
+    this.setState({
+      recp : recipe,
+      inp1: '',
+      inp2: '',
+      inp3: '',
+    });
+  }
 
-      <div class="row"> 
-        <div class="col-xl-1 col-md-1 col-1"/>
-        <div class="col-xl-2 col-md-4 col-4">
-          <span class="text-justify">About us</span>
+  //Выводим форму для ингридиента 2
+  Field2() {
+    if (this.state.inp1 !== '') {
+      return(
+        <div class="col-xl-3 col-md-3 col-12">
+            <input name="inp2" type="text" class="form-control" placeholder="Ingridient 2"
+              value={this.state.inp2}
+              onChange={this.handleUserInput} 
+            />
+          </div>
+      )
+    }
+  }
+
+  //Выводим форму для ингридиента 3
+  Field3() {
+    if (this.state.inp2 !== '') {
+      return(
+        <div class="col-xl-3 col-md-3 col-12">
+          <input name="inp3" type="text" class="form-control" placeholder="Ingridient 3"
+            value={this.state.inp3}
+            onChange={this.handleUserInput} 
+          />
         </div>
-        <div class="col-xl-6 col-md-2 col-2">
+      )
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {/* Логотип */}
+        <div class="row"> 
+          <div class="col-xl-12 col-md-12 col-12">
+            <span class="text-justify">Logo</span>
+          </div>
+        </div>  
+
+        {/* Рецепт */}
+        <div class="row"> 
+          <div class="col-xl-12 col-md-12 col-12">
+            {this.Protocol11()}
+          </div>
         </div>
-        <div class="col-xl-2 col-md-4 col-4">
-          <span class="text-justify">2019</span>
+
+        <div class="row"> 
+          {/* Поле ввода 1 */}
+          <div class="col-xl-3 col-md-3 col-12">
+            <input name="inp1" type="text" class="form-control" placeholder="Ingridient 1"
+              value={this.state.inp1}
+              onChange={this.handleUserInput} 
+            />
+          </div>
+          
+          {/* Поле ввода 2 */}
+          {this.Field2()}
+
+          {/* Поле ввода 3 */}
+          {this.Field3()}
+
+          {/* Кнопка */}
+          <div class="col-xl-3 col-md-3 col-12">
+            <button class="btn btn-outline-secondary" type="button" onClick={this.SummonEdward}>Generate</button>
+          </div>
+          <div class="col-xl-2 col-md-2 col-0"/>
         </div>
-        <div class="col-xl-1 col-md-1 col-1"/>
+        
+        
+        {/* Прочая ересь */}
+        <div class="row"> 
+          <div class="col-xl-1 col-md-1 col-1"/>
+          <div class="col-xl-2 col-md-4 col-4">
+            <span class="text-justify">About us</span>
+          </div>
+          <div class="col-xl-6 col-md-2 col-2">
+          </div>
+          <div class="col-xl-2 col-md-4 col-4">
+            <span class="text-justify">2019</span>
+          </div>
+          <div class="col-xl-1 col-md-1 col-1"/>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
