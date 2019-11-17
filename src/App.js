@@ -28,7 +28,7 @@ class App extends React.Component {
       return(
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">Some 5h!7 to eat!!!</h1>
+            <h1 class="display-4">Some snack to eat!!!</h1>
             <p class="lead">
               {this.state.recp}
             </p>
