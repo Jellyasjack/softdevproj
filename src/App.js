@@ -26,7 +26,7 @@ class App extends React.Component {
       return(
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">Some shit to eat!!!</h1>
+            <h1 class="display-4">Some 5h!7 to eat!!!</h1>
             <p class="lead">
               {this.state.recp}
             </p>
@@ -41,7 +41,7 @@ class App extends React.Component {
     let recipe;
     if (this.state.inp3 !== '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +' and '+ this.state.inp3 +'. Burn that. Throw that away.'};
     if (this.state.inp3 === '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +'. Burn that. Throw that away.'};
-    if (this.state.inp2 === '') {recipe = 'Use '+ this.state.inp1 +'. Burn that. Throw that away.'};
+    if (this.state.inp2 === '') {recipe = 'Take'+ this.state.inp1 +'. Burn that. Throw that away.'};
     if (this.state.inp1 === '') {recipe = 'Haha, just kidding) You dont deserve food!!!'};
     this.setState({
       recp : recipe,
@@ -97,6 +97,12 @@ class App extends React.Component {
         </div>
 
         <div class="row"> 
+
+          {/* Кнопка */}
+          <div class="col-xl-3 col-md-3 col-12">
+            <button class="btn btn-outline-secondary" type="button" onClick={this.SummonEdward}>Generate</button>
+          </div>
+
           {/* Поле ввода 1 */}
           <div class="col-xl-3 col-md-3 col-12">
             <input name="inp1" type="text" class="form-control" placeholder="Ingridient 1"
@@ -110,12 +116,6 @@ class App extends React.Component {
 
           {/* Поле ввода 3 */}
           {this.Field3()}
-
-          {/* Кнопка */}
-          <div class="col-xl-3 col-md-3 col-12">
-            <button class="btn btn-outline-secondary" type="button" onClick={this.SummonEdward}>Generate</button>
-          </div>
-          <div class="col-xl-2 col-md-2 col-0"/>
         </div>
         
         
