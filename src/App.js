@@ -16,8 +16,10 @@ class App extends React.Component {
   //Запоминаем рецепт
   handleUserInput = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
     this.setState({[name]: value});
+    if (this.state.inp1==='') {this.setState({inp3: '', inp2: ''})};
+    if (this.state.inp2==='') {this.setState({inp3: ''})};
   }
 
   //Выводим рецепт
@@ -56,7 +58,7 @@ class App extends React.Component {
     if (this.state.inp1 !== '') {
       return(
         <div class="col-xl-3 col-md-3 col-12">
-            <input name="inp2" type="text" class="form-control" placeholder="Ingridient 2"
+            <input name="inp2" type="text" class="form-control" placeholder="Add ingridient"
               value={this.state.inp2}
               onChange={this.handleUserInput} 
             />
@@ -67,10 +69,10 @@ class App extends React.Component {
 
   //Выводим форму для ингридиента 3
   Field3() {
-    if (this.state.inp2 !== '') {
+    if (this.state.inp1 !== '' && this.state.inp2 !== '') {
       return(
         <div class="col-xl-3 col-md-3 col-12">
-          <input name="inp3" type="text" class="form-control" placeholder="Ingridient 3"
+          <input name="inp3" type="text" class="form-control" placeholder="Add ingridient"
             value={this.state.inp3}
             onChange={this.handleUserInput} 
           />
@@ -105,7 +107,7 @@ class App extends React.Component {
 
           {/* Поле ввода 1 */}
           <div class="col-xl-3 col-md-3 col-12">
-            <input name="inp1" type="text" class="form-control" placeholder="Ingridient 1"
+            <input name="inp1" type="text" class="form-control" placeholder="Add ingridient"
               value={this.state.inp1}
               onChange={this.handleUserInput} 
             />
