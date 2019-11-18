@@ -55,30 +55,40 @@ class App extends React.Component {
 
   //Выводим форму для ингридиента 2
   Field2() {
+    var stt2
     if (this.state.inp1 !== '') {
-      return(
-        <div class="col-xl-3 col-md-3 col-12">
-            <input name="inp2" type="text" class="form-control" placeholder="Add ingridient"
-              value={this.state.inp2}
-              onChange={this.handleUserInput} 
-            />
-          </div>
-      )
+      stt2 = "fadein"
     }
+    else {
+      stt2 = "fadeout"
+    }
+    return(
+      <div class={"col-xl-3 col-md-3 col-12 " + stt2}>
+        <input name="inp2" type="text" class="form-control" placeholder="Add ingridient"
+          value={this.state.inp2}
+          onChange={this.handleUserInput} 
+        />
+      </div>
+    )
   }
 
   //Выводим форму для ингридиента 3
   Field3() {
+    var stt3
     if (this.state.inp1 !== '' && this.state.inp2 !== '') {
-      return(
-        <div class="col-xl-3 col-md-3 col-12">
-          <input name="inp3" type="text" class="form-control" placeholder="Add ingridient"
-            value={this.state.inp3}
-            onChange={this.handleUserInput} 
-          />
-        </div>
-      )
+      stt3 = "fadein"
     }
+    else {
+      stt3 = "fadeout"
+    }
+    return(
+      <div class={"col-xl-3 col-md-3 col-12 " + stt3}>
+        <input name="inp3" type="text" class="form-control" placeholder="Add ingridient"
+          value={this.state.inp3}
+          onChange={this.handleUserInput} 
+        />
+      </div>
+    )
   }
 
   render() {
