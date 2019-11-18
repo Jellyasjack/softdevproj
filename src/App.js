@@ -13,10 +13,13 @@ class App extends React.Component {
     this.SummonEdward = this.SummonEdward.bind(this);
   }
 
-  //Запоминаем рецепт
+  //Запоминаем ингридиенты
   handleUserInput = (e) => {
     const name = e.target.name;
-    const value = e.target.value.toLowerCase();
+    var value = e.target.value.toLowerCase();
+    if (value.length > 15) {
+      value = value.substr(0, 15);
+    }
     this.setState({[name]: value});
     if (this.state.inp1==='') {this.setState({inp3: '', inp2: ''})};
     if (this.state.inp2==='') {this.setState({inp3: ''})};
@@ -43,7 +46,7 @@ class App extends React.Component {
     let recipe;
     if (this.state.inp3 !== '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +' and '+ this.state.inp3 +'. Burn that. Throw that away.'};
     if (this.state.inp3 === '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +'. Burn that. Throw that away.'};
-    if (this.state.inp2 === '') {recipe = 'Take'+ this.state.inp1 +'. Burn that. Throw that away.'};
+    if (this.state.inp2 === '') {recipe = 'Take '+ this.state.inp1 +'. Burn that. Throw that away.'};
     if (this.state.inp1 === '') {recipe = 'Haha, just kidding) You dont deserve food!!!'};
     this.setState({
       recp : recipe,
@@ -133,16 +136,9 @@ class App extends React.Component {
         
         {/* Прочая ересь */}
         <div class="row"> 
-          <div class="col-xl-1 col-md-1 col-1"/>
-          <div class="col-xl-2 col-md-4 col-4">
-            <span class="text-justify">About us</span>
+          <div class="col-xl-12 col-md-12 col-12">
+            <span class="text-justify">2019   D.E.V.&#169;</span>
           </div>
-          <div class="col-xl-6 col-md-2 col-2">
-          </div>
-          <div class="col-xl-2 col-md-4 col-4">
-            <span class="text-justify">2019</span>
-          </div>
-          <div class="col-xl-1 col-md-1 col-1"/>
         </div>
       </div>
     );
