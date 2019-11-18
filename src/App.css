@@ -31,3 +31,30 @@
   visibility: visible;
   transition: 0.4s;
 }
+
+.larger {
+  padding-left: 4% !important;
+  padding-right: 4% !important;
+}
+
+.smallr {
+  padding-left: 2% !important;
+  padding-right: 2% !important;
+}
+
+.sbig {
+  width: 100% !important;
+}
+
+.smed {
+  width: 92% !important;
+  align-self: center; 
+}
+
+.ssml {
+  width: 19% !important;
+}
+
+.pict {
+  height: 10%;
+}

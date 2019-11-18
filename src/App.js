@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import logo from './logo.jpg';
 
 class App extends React.Component {
   constructor (props) {
@@ -11,6 +12,13 @@ class App extends React.Component {
       recp: '',
     }
     this.SummonEdward = this.SummonEdward.bind(this);
+  }
+
+  //Лого
+  logo() {
+    return (
+      <img src={logo} alt="Logo" class="pict"/>
+    )
   }
 
   //Запоминаем ингридиенты
@@ -66,7 +74,7 @@ class App extends React.Component {
       stt2 = "fadeout"
     }
     return(
-      <div class={"col-xl-3 col-md-3 col-12 " + stt2}>
+      <div class={"col-xl-3 col-md-3 col-12 smallr ssml " + stt2}>
         <input name="inp2" type="text" class="form-control" placeholder="Add ingridient"
           value={this.state.inp2}
           onChange={this.handleUserInput} 
@@ -85,7 +93,7 @@ class App extends React.Component {
       stt3 = "fadeout"
     }
     return(
-      <div class={"col-xl-3 col-md-3 col-12 " + stt3}>
+      <div class={"col-xl-3 col-md-3 col-12 smallr ssml " + stt3}>
         <input name="inp3" type="text" class="form-control" placeholder="Add ingridient"
           value={this.state.inp3}
           onChange={this.handleUserInput} 
@@ -96,30 +104,31 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" class="sbig">
+
         {/* Логотип */}
-        <div class="row"> 
+        <div class="row larger sbig"> 
           <div class="col-xl-12 col-md-12 col-12">
-            <span class="text-justify">Logo</span>
+            {this.logo()}
           </div>
         </div>  
 
         {/* Рецепт */}
-        <div class="row"> 
-          <div class="col-xl-12 col-md-12 col-12">
+        <div class="row larger sbig"> 
+          <div class="col-xl-12 col-md-12 col-12 smed">
             {this.Protocol11()}
           </div>
         </div>
 
-        <div class="row"> 
+        <div class="row smallr sbig"> 
 
           {/* Кнопка */}
-          <div class="col-xl-3 col-md-3 col-12">
-            <button class="btn btn-outline-secondary" type="button" onClick={this.SummonEdward}>Generate</button>
+          <div class="col-xl-3 col-md-3 col-12 smallr ssml">
+            <button class="btn btn-outline-secondary sbig" type="button" onClick={this.SummonEdward}>Generate</button>
           </div>
 
           {/* Поле ввода 1 */}
-          <div class="col-xl-3 col-md-3 col-12">
+          <div class="col-xl-3 col-md-3 col-12 smallr ssml">
             <input name="inp1" type="text" class="form-control" placeholder="Add ingridient"
               value={this.state.inp1}
               onChange={this.handleUserInput} 
@@ -135,7 +144,7 @@ class App extends React.Component {
         
         
         {/* Прочая ересь */}
-        <div class="row"> 
+        <div class="row larger"> 
           <div class="col-xl-12 col-md-12 col-12">
             <span class="text-justify">2019   D.E.V.&#169;</span>
           </div>
