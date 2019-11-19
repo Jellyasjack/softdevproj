@@ -39,10 +39,11 @@ class App extends React.Component {
       return(
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">Some snack to eat!!!</h1>
-            <p class="lead">
+            <p class="lead fatfont">Some snack to eat!!!</p>
+            <p class="lead leadd">
               {this.state.recp}
             </p>
+            <p class="lead leadd"> Wash and peel the vegetables. Wash the meat, pat dry with paper towels. Fry the meat in vegetable oil over high heat until golden brown on all sides.  Cut the vegetables, add to the meat, fry everything together, stirring occasionally, for several minutes. Add a little water, about half a glass, cover and simmer over low heat for 40-45 minutes. Rinse the rice well. Put rice in a pan with meat and vegetables, put tomatoes on top. Boil. Cook over low heat until liquid is completely gone, about 20 minutes. </p>
           </div>
         </div>
       )
@@ -74,7 +75,7 @@ class App extends React.Component {
       stt2 = "fadeout"
     }
     return(
-      <div class={"col-xl-3 col-md-3 col-12 smallr ssml " + stt2}>
+      <div class={"col-xl-3 col-md-3 col-12   " + stt2}>
         <input name="inp2" type="text" class="form-control" placeholder="Add ingridient"
           value={this.state.inp2}
           onChange={this.handleUserInput} 
@@ -93,7 +94,7 @@ class App extends React.Component {
       stt3 = "fadeout"
     }
     return(
-      <div class={"col-xl-3 col-md-3 col-12 smallr ssml " + stt3}>
+      <div class={"col-xl-3 col-md-3 col-12   " + stt3}>
         <input name="inp3" type="text" class="form-control" placeholder="Add ingridient"
           value={this.state.inp3}
           onChange={this.handleUserInput} 
@@ -104,32 +105,33 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App" class="sbig">
+      <div className="App" class="">
 
         {/* Логотип */}
-        <div class="row larger sbig"> 
-          <div class="col-xl-12 col-md-12 col-12">
+        <div class="row  "> 
+          <div class="col-xl-12 col-md-12 col-12 llogo">
             {this.logo()}
           </div>
         </div>  
 
         {/* Рецепт */}
-        <div class="row larger sbig"> 
-          <div class="col-xl-12 col-md-12 col-12 smed">
+        <div class="row  "> 
+          <div class="col-xl-12 col-md-12 col-12 ">
             {this.Protocol11()}
           </div>
         </div>
 
-        <div class="row smallr sbig"> 
+        <div class="row  "> 
+          <div class="border col-0"/>
 
           {/* Кнопка */}
-          <div class="col-xl-3 col-md-3 col-12 smallr ssml">
-            <button class="btn btn-outline-secondary sbig" type="button" onClick={this.SummonEdward}>Generate</button>
+          <div class="col-xl-3 col-md-3 col-12">
+            <button class="btn btn-outline-secondary " type="button" onClick={this.SummonEdward}>Generate</button>
           </div>
 
           {/* Поле ввода 1 */}
-          <div class="col-xl-3 col-md-3 col-12 smallr ssml">
-            <input name="inp1" type="text" class="form-control" placeholder="Add ingridient"
+          <div class="col-xl-3 col-md-3 col-12">
+            <input name="inp1" type="text" class="form-control elem" placeholder="Add ingridient"
               value={this.state.inp1}
               onChange={this.handleUserInput} 
             />
@@ -140,13 +142,15 @@ class App extends React.Component {
 
           {/* Поле ввода 3 */}
           {this.Field3()}
+
+          <div class="border col-0  "/>
         </div>
         
         
         {/* Прочая ересь */}
-        <div class="row larger"> 
-          <div class="col-xl-12 col-md-12 col-12">
-            <span class="text-justify">2019   D.E.V.&#169;</span>
+        <div class="row "> 
+          <div class="col-xl-12 col-md-12 col-12 textt">
+            <span class="lead leadd">2019   D.E.V.&#169;</span>
           </div>
         </div>
       </div>
