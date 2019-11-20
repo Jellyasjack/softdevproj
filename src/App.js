@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import './App1.css';
+import './App2.css';
 import logo from './logo.jpg';
 
 class App extends React.Component {
@@ -75,8 +76,8 @@ class App extends React.Component {
       stt2 = "fadeout"
     }
     return(
-      <div class={"col-lg-3 col-12   " + stt2}>
-        <input name="inp2" type="text" class="form-control" placeholder="Add ingridient"
+      <div class={"col-lg-3 col-12 " + stt2}>
+        <input name="inp2" type="text" class="form-control" placeholder="Add ingredient"
           value={this.state.inp2}
           onChange={this.handleUserInput} 
         />
@@ -94,13 +95,24 @@ class App extends React.Component {
       stt3 = "fadeout"
     }
     return(
-      <div class={"col-lg-3 col-12   " + stt3}>
-        <input name="inp3" type="text" class="form-control" placeholder="Add ingridient"
+      <div class={"col-lg-3 col-12 " + stt3}>
+        <input name="inp3" type="text" class="form-control" placeholder="Add ingredient"
           value={this.state.inp3}
           onChange={this.handleUserInput} 
         />
       </div>
     )
+  }
+
+  // Активация по Enter
+  keydownHandler(e){
+    if(e.keyCode===13) {this.SummonEdward()}
+  }
+  componentDidMount(){
+    document.addEventListener('keydown',this.keydownHandler);
+  }
+  componentWillUnmount(){
+    document.removeEventListener('keydown',this.keydownHandler);
   }
 
   render() {
@@ -131,7 +143,7 @@ class App extends React.Component {
 
           {/* Поле ввода 1 */}
           <div class="col-lg-3 col-12">
-            <input name="inp1" type="text" class="form-control elem" placeholder="Add ingridient"
+            <input name="inp1" type="text" class="form-control elem" placeholder="Add ingredient"
               value={this.state.inp1}
               onChange={this.handleUserInput} 
             />

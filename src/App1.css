@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -19,7 +19,7 @@
 
 .App-link {
   color: #09d3ac;
-}
+} */
 
 .fadeout {
   opacity: 0;
@@ -84,15 +84,7 @@
   .col-0 {
     visibility: hidden;
   }
-
-  .col-xl-3 .col-md-3 {
-    padding-left: 2% !important;
-    padding-right: 2% !important;
-    padding-top: 4% !important;
-    padding-bottom: 4% !important;
-    width: 18% !important;
-  }
-
+  
   .elem {
     width: 100% !important;
   }
