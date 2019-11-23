@@ -105,15 +105,15 @@ class App extends React.Component {
   }
 
   // Активация по Enter
-  keydownHandler(e){
-    if(e.keyCode===13) {this.SummonEdward()}
-  }
-  componentDidMount(){
-    document.addEventListener('keydown',this.keydownHandler);
-  }
-  componentWillUnmount(){
-    document.removeEventListener('keydown',this.keydownHandler);
-  }
+  // keydownHandler(e){
+  //   if(e.keyCode===13) {this.SummonEdward()}
+  // }
+  // componentDidMount(){
+  //   document.addEventListener('keydown',this.keydownHandler);
+  // }
+  // componentWillUnmount(){
+  //   document.removeEventListener('keydown',this.keydownHandler);
+  // }
 
   render() {
     return (
