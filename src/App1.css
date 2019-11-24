@@ -63,6 +63,14 @@
     width: 100%;
   }
 
+  .hrow {
+    height: 20% !important;
+  }
+
+  .hhrow {
+    height: max-content !important;
+  }
+
   .jumbotron {
     padding: 2% 2% !important;
   }

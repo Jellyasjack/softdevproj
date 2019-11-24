@@ -2,6 +2,7 @@ import React from 'react';
 import './App1.css';
 import './App2.css';
 import logo from './logo.jpg';
+import testjson from './index.json'
 
 class App extends React.Component {
   constructor (props) {
@@ -11,8 +12,10 @@ class App extends React.Component {
       inp2: '',
       inp3: '',
       recp: '',
+      name: '',
+      url: '',
     }
-    this.SummonEdward = this.SummonEdward.bind(this);
+    this.FromServ = this.FromServ.bind(this);
   }
 
   //Лого
@@ -40,11 +43,8 @@ class App extends React.Component {
       return(
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <p class="lead fatfont">Some snack to eat!!!</p>
-            <p class="lead leadd">
-              {this.state.recp}
-            </p>
-            <p class="lead leadd"> Wash and peel the vegetables. Wash the meat, pat dry with paper towels. Fry the meat in vegetable oil over high heat until golden brown on all sides.  Cut the vegetables, add to the meat, fry everything together, stirring occasionally, for several minutes. Add a little water, about half a glass, cover and simmer over low heat for 40-45 minutes. Rinse the rice well. Put rice in a pan with meat and vegetables, put tomatoes on top. Boil. Cook over low heat until liquid is completely gone, about 20 minutes. </p>
+            <p class="lead fatfont">{this.state.name}</p>
+            <p class="lead leadd">{this.state.recp}</p>
           </div>
         </div>
       )
@@ -52,18 +52,28 @@ class App extends React.Component {
   }
     
   //Записываем рецепт и обнуляем ингридиенты
-  SummonEdward() {
-    let recipe;
-    if (this.state.inp3 !== '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +' and '+ this.state.inp3 +'. Burn that. Throw that away.'};
-    if (this.state.inp3 === '') {recipe = 'Mix '+ this.state.inp1 +' and '+ this.state.inp2 +'. Burn that. Throw that away.'};
-    if (this.state.inp2 === '') {recipe = 'Take '+ this.state.inp1 +'. Burn that. Throw that away.'};
-    if (this.state.inp1 === '') {recipe = 'Haha, just kidding) You dont deserve food!!!'};
-    this.setState({
-      recp : recipe,
+  FromServ() {
+    let nurl = 'http://79.141.152.102/back.php' + this.state.inp1
+    this.setState({ 
+      recp: "Loading...",
+      url : nurl,
       inp1: '',
       inp2: '',
       inp3: '',
     });
+    console.log(this.state.url)
+  }
+  
+  componentDidMount() {
+    const urll = "http://79.141.152.102/back.php"
+    fetch(urll).then(res => res.json()).then(json => {
+      console.log(json)
+      // this.setState({ 
+      //   recp: jsonData.Description,
+      //   name : jsonData.Name
+      // })
+    }).catch((error) => {console.error(error)})
+   
   }
 
   //Выводим форму для ингридиента 2
@@ -106,7 +116,7 @@ class App extends React.Component {
 
   // Активация по Enter
   // keydownHandler(e){
-  //   if(e.keyCode===13) {this.SummonEdward()}
+  //   if(e.keyCode===13) {this.FromServ()}
   // }
   // componentDidMount(){
   //   document.addEventListener('keydown',this.keydownHandler);
@@ -117,7 +127,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App" class="">
+      <div className="App" class="hhrow">
 
         {/* Логотип */}
         <div class="row  "> 
@@ -137,8 +147,8 @@ class App extends React.Component {
           <div class="border col-0"/>
 
           {/* Кнопка */}
-          <div class="col-lg-3 col-12">
-            <button class="btn btn-outline-secondary " type="button" onClick={this.SummonEdward}>Generate</button>
+          <div class="col-lg-3 col-12 hrow" >
+            <button class="btn btn-outline-secondary " type="button" onClick={this.FromServ}>Generate</button>
           </div>
 
           {/* Поле ввода 1 */}
